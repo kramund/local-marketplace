@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Uploaded files
+backend/uploads/
+
 # Environment variables
 .env
 .env.local
