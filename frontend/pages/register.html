@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account — Local Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body class="auth-page">
+
+  <div class="auth-card">
+    <div class="auth-logo">
+      <a href="/">🛒 Local Marketplace</a>
+    </div>
+    <h2>Create your account</h2>
+    <p class="auth-sub">Join your local community marketplace</p>
+
+    <div id="auth-error" class="auth-error" style="display:none;"></div>
+
+    <form id="register-form" novalidate>
+
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" placeholder="Juan dela Cruz" />
+      </div>
+
+      <div class="form-group">
+        <label for="username">Username <span class="required">*</span></label>
+        <input type="text" id="username" placeholder="juandelacruz" required />
+        <small>Letters, numbers, and underscores only.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input type="email" id="email" placeholder="juan@email.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="09XXXXXXXXX" />
+      </div>
+
+      <div class="form-group">
+        <label for="location">Your Location</label>
+        <input type="text" id="location" placeholder="Barangay, City, Province" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password <span class="required">*</span></label>
+        <input type="password" id="password" placeholder="At least 8 characters" required />
+      </div>
+
+      <div class="form-group">
+        <label for="confirm_password">Confirm Password <span class="required">*</span></label>
+        <input type="password" id="confirm_password" placeholder="Re-enter your password" required />
+      </div>
+
+      <button type="submit" class="btn-submit" data-label="Create Account">Create Account</button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="/pages/login.html">Log in</a></p>
+  </div>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>

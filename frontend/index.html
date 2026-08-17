@@ -7,13 +7,26 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>🛒 Local Marketplace</h1>
-    <p>Buy and sell within your community</p>
+
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="/" class="logo">🛒 Local Marketplace</a>
+      <nav id="main-nav">
+        <!-- Injected by main.js based on auth state -->
+      </nav>
+    </div>
   </header>
+
   <main>
-    <p>Coming soon...</p>
+    <section class="hero">
+      <h2>Buy and sell within your community</h2>
+      <p>Find great deals from people near you — safe, simple, and local.</p>
+      <div class="hero-actions" id="hero-actions">
+        <!-- Injected by main.js -->
+      </div>
+    </section>
   </main>
+
   <script src="/js/main.js"></script>
 </body>
 </html>

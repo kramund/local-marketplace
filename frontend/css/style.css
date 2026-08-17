@@ -1,4 +1,5 @@
-* {
+/* ─── Reset & Base ──────────────────────────────────────────── */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -7,27 +8,147 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f4f6f8;
-  color: #333;
+  color: #1f2937;
+  min-height: 100vh;
 }
 
-header {
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.main-header {
   background: #2563eb;
   color: white;
-  padding: 1.5rem 2rem;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+}
+
+#main-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-greeting {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+  margin-right: 0.5rem;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────── */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: white;
+  color: #2563eb;
+}
+
+.btn-primary:hover {
+  background: #e0eaff;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(255,255,255,0.6);
+  color: white;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+button.btn-outline {
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+/* ─── Hero Section ──────────────────────────────────────────── */
+.hero {
   text-align: center;
+  padding: 5rem 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
-header h1 {
-  font-size: 2rem;
+.hero h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
-header p {
-  margin-top: 0.25rem;
-  opacity: 0.85;
+.hero p {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.hero-actions .btn-primary {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.hero-actions .btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.hero-actions .btn-outline {
+  background: transparent;
+  color: #2563eb;
+  border-color: #2563eb;
+}
+
+.hero-actions .btn-outline:hover {
+  background: #eff6ff;
+}
+
+/* ─── Main Container ────────────────────────────────────────── */
 main {
-  max-width: 1100px;
-  margin: 2rem auto;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 1rem;
 }
