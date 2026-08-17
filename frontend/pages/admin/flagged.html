@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flagged Queue — Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h1>🚩 Flagged Listings Queue</h1>
+      <span id="flagged-count" style="color:#94a3b8;font-size:0.9rem;"></span>
+    </div>
+    <div class="admin-content">
+      <p style="color:#64748b;margin-bottom:1.5rem;font-size:0.9rem;">
+        These listings were auto-flagged by the moderation engine. Review each one and either approve (keep it live) or remove it.
+      </p>
+      <div class="flagged-grid" id="flagged-grid">
+        <p style="color:#94a3b8;">Loading flagged listings…</p>
+      </div>
+      <div class="admin-pagination" id="flagged-pagination"></div>
+    </div>
+  </div>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

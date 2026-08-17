@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Users — Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h1>👥 User Management</h1>
+      <span id="au-count" style="color:#94a3b8;font-size:0.9rem;"></span>
+    </div>
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="admin-toolbar">
+          <div class="toolbar-search">
+            <input type="text" id="au-search" placeholder="Search username, email, or name…"/>
+            <button id="au-search-btn">Search</button>
+          </div>
+          <div class="toolbar-filter">
+            <select id="au-role">
+              <option value="">All Roles</option>
+              <option value="user">User</option>
+              <option value="moderator">Moderator</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div class="toolbar-filter">
+            <select id="au-banned">
+              <option value="">All Users</option>
+              <option value="true">Banned Only</option>
+              <option value="false">Active Only</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Role</th>
+                <th>Listings</th>
+                <th>Location</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-users-table">
+              <tr><td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="admin-pagination" id="au-pagination"></div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

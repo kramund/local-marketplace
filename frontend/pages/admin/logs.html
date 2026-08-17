@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Activity Log — Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h1>🗂️ Activity Log</h1>
+    </div>
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Admin</th>
+                <th>Action</th>
+                <th>Target</th>
+                <th>Notes</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="admin-logs-table">
+              <tr><td colspan="5" style="text-align:center;padding:2rem;color:#94a3b8;">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="admin-pagination" id="logs-pagination"></div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/admin.js"></script>
+  <script>
+    // Logs page — load inline since it's standalone
+    renderSidebar('logs');
+    let logsPage = 1;
+
+    const loadLogs = async () => {
+      try {
+        const data = await adminFetch(`/api/admin/logs?page=${logsPage}&limit=30`);
+        const tbody = document.getElementById('admin-logs-table');
+
+        if (!data.logs.length) {
+          tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><div class="e-icon">🗂️</div><p>No activity logged yet.</p></div></td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = data.logs.map(l => `
+          <tr>
+            <td><strong>${l.admin_username}</strong></td>
+            <td><code style="background:#f1f5f9;padding:0.2rem 0.5rem;border-radius:4px;font-size:0.8rem;">${l.action}</code></td>
+            <td>${l.target_type ? `${l.target_type} #${l.target_id}` : '—'}</td>
+            <td style="color:#64748b;max-width:260px;">${l.notes || '—'}</td>
+            <td>${timeAgo(l.created_at)}</td>
+          </tr>`).join('');
+
+        renderPagination('logs-pagination', data.pagination, (p) => { logsPage = p; loadLogs(); });
+      } catch (err) {
+        document.getElementById('admin-logs-table').innerHTML =
+          `<tr><td colspan="5" style="color:#ef4444;padding:1rem;">Error: ${err.message}</td></tr>`;
+      }
+    };
+
+    loadLogs();
+  </script>
+</body>
+</html>

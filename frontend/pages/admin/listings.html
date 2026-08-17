@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Listings — Admin Panel</title>
+  <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body class="admin-body">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h1>📦 Listings Management</h1>
+      <span id="al-count" style="color:#94a3b8;font-size:0.9rem;"></span>
+    </div>
+    <div class="admin-content">
+      <div class="admin-card">
+        <div class="admin-toolbar">
+          <div class="toolbar-search">
+            <input type="text" id="al-search" placeholder="Search title or seller…"/>
+            <button id="al-search-btn">Search</button>
+          </div>
+          <div class="toolbar-filter">
+            <select id="al-status">
+              <option value="">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="removed">Removed</option>
+              <option value="sold">Sold</option>
+              <option value="reserved">Reserved</option>
+            </select>
+          </div>
+          <div class="toolbar-filter">
+            <select id="al-flagged">
+              <option value="">All Listings</option>
+              <option value="true">Flagged Only</option>
+              <option value="false">Not Flagged</option>
+            </select>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Seller</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Posted</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-listings-table">
+              <tr><td colspan="7" style="text-align:center;padding:2rem;color:#94a3b8;">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="admin-pagination" id="al-pagination"></div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/admin.js"></script>
+</body>
+</html>
