@@ -290,7 +290,7 @@ if (listingDetail) {
               <div class="seller-info">
                 <div class="seller-avatar">${avatarHtml}</div>
                 <div>
-                  <div class="seller-name">${l.seller_name || l.seller_username}</div>
+                  <a href="/pages/profile.html?id=${l.seller_id}" class="seller-name" style="text-decoration:none;color:inherit;">${l.seller_name || l.seller_username}</a>
                   ${l.seller_location ? `<div class="seller-location">📍 ${l.seller_location}</div>` : ''}
                   <div class="seller-rating">${ratingTxt}</div>
                 </div>

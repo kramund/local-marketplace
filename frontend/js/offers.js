@@ -114,17 +114,23 @@ if (offersListEl) {
 
     // Action buttons based on role + status
     let actions = '';
+    const safeTitle    = o.listing_title.replace(/'/g, "\\'");
+    const safeUsername = otherUser.replace(/'/g, "\\'");
+    const revieweeId   = isReceived ? o.buyer_id  : o.seller_id;
+
     if (isReceived) {
       if (o.status === 'pending') {
         actions = `
           <button class="offer-btn offer-btn-accept"  onclick="acceptOffer(${o.id})">✅ Accept</button>
-          <button class="offer-btn offer-btn-counter" onclick="openCounterModal(${o.id}, ${o.amount}, '${o.listing_title.replace(/'/g,"\\'")}')">🔄 Counter</button>
+          <button class="offer-btn offer-btn-counter" onclick="openCounterModal(${o.id}, ${o.amount}, '${safeTitle}')">🔄 Counter</button>
           <button class="offer-btn offer-btn-decline" onclick="declineOffer(${o.id})">❌ Decline</button>
-          <button class="offer-btn offer-btn-message" onclick="messageUser(${o.listing_id}, '${otherUser.replace(/'/g,"\\'")}')">💬 Message</button>`;
+          <button class="offer-btn offer-btn-message" onclick="messageUser(${o.listing_id}, '${safeUsername}')">💬 Message</button>`;
       } else if (o.status === 'countered') {
         actions = `
           <button class="offer-btn offer-btn-decline" onclick="declineOffer(${o.id})">❌ Decline</button>
-          <button class="offer-btn offer-btn-message" onclick="messageUser(${o.listing_id}, '${otherUser.replace(/'/g,"\\'")}')">💬 Message</button>`;
+          <button class="offer-btn offer-btn-message" onclick="messageUser(${o.listing_id}, '${safeUsername}')">💬 Message</button>`;
+      } else if (o.status === 'accepted') {
+        actions = `<button class="offer-btn" style="background:#fef9c3;color:#92400e;border:1px solid #fde68a;" onclick="openReviewModal(${revieweeId}, '${safeUsername}', ${o.listing_id}, '${safeTitle}')">⭐ Leave a Review</button>`;
       }
     } else {
       // Sent offers — buyer actions
@@ -134,6 +140,8 @@ if (offersListEl) {
         actions = `
           <button class="offer-btn offer-btn-accept" onclick="acceptCounter(${o.id})">✅ Accept Counter (${formatPrice(o.counter_amount)})</button>
           <button class="offer-btn offer-btn-withdraw" onclick="withdrawOffer(${o.id})">↩️ Decline Counter</button>`;
+      } else if (o.status === 'accepted') {
+        actions = `<button class="offer-btn" style="background:#fef9c3;color:#92400e;border:1px solid #fde68a;" onclick="openReviewModal(${revieweeId}, '${safeUsername}', ${o.listing_id}, '${safeTitle}')">⭐ Leave a Review</button>`;
       }
     }
 
