@@ -15,13 +15,31 @@ const heroActions = document.getElementById('hero-actions');
 
 if (isLoggedIn()) {
   const user = getUser();
-  if (nav) {
-    nav.innerHTML = `
-      <span class="nav-greeting">Hi, <strong>${user.username}</strong>!</span>
-      <a href="/pages/post-listing.html" class="btn btn-primary">+ Post Item</a>
-      <button onclick="logout()" class="btn btn-outline">Log Out</button>
-    `;
-  }
+
+  // Fetch unread message count for badge
+  fetch('/api/messages/unread-count', {
+    headers: { 'Authorization': `Bearer ${getToken()}` }
+  }).then(r => r.json()).then(data => {
+    const badge = data.count > 0 ? `<span class="nav-unread">${data.count}</span>` : '';
+    if (nav) {
+      nav.innerHTML = `
+        <span class="nav-greeting">Hi, <strong>${user.username}</strong>!</span>
+        <a href="/pages/messages.html" class="btn btn-outline" style="position:relative;">💬 Messages${badge}</a>
+        <a href="/pages/post-listing.html" class="btn btn-primary">+ Post Item</a>
+        <button onclick="logout()" class="btn btn-outline">Log Out</button>
+      `;
+    }
+  }).catch(() => {
+    if (nav) {
+      nav.innerHTML = `
+        <span class="nav-greeting">Hi, <strong>${user.username}</strong>!</span>
+        <a href="/pages/messages.html" class="btn btn-outline">💬 Messages</a>
+        <a href="/pages/post-listing.html" class="btn btn-primary">+ Post Item</a>
+        <button onclick="logout()" class="btn btn-outline">Log Out</button>
+      `;
+    }
+  });
+
   if (heroActions) {
     heroActions.innerHTML = `
       <a href="/pages/listings.html" class="btn btn-primary">Browse Listings</a>

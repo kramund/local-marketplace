@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Messages — Local Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/messages.css"/>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="/" class="logo">🛒 Local Marketplace</a>
+      <nav id="main-nav"></nav>
+    </div>
+  </header>
+
+  <div class="messages-page" id="messages-page">
+
+    <!-- Conversations List -->
+    <div class="conversations-panel">
+      <div class="conv-header">
+        <h2>💬 Messages</h2>
+        <span class="conv-badge" id="unread-badge" style="display:none;"></span>
+      </div>
+      <div class="conv-list" id="conv-list">
+        <div class="conv-empty">
+          <div class="ce-icon">💬</div>
+          <p>Loading conversations...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-panel" id="chat-panel">
+      <div class="chat-empty">
+        <div class="ce-icon">💬</div>
+        <p>Select a conversation to start chatting</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/messages.js"></script>
+</body>
+</html>
