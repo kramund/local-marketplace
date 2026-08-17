@@ -30,6 +30,7 @@ if (isLoggedIn()) {
         <span class="nav-greeting">Hi, <strong>${user.username}</strong>!</span>
         <a href="/pages/messages.html" class="btn btn-outline" style="position:relative;">💬 Messages${msgBadge}</a>
         <a href="/pages/offers.html"   class="btn btn-outline" style="position:relative;">💰 Offers${offerBadge}</a>
+        <a href="/pages/saved.html"    class="btn btn-outline">🔖 Saved</a>
         <a href="/pages/profile.html?id=${user.id}" class="btn btn-outline">👤 Profile</a>
         <a href="/pages/post-listing.html" class="btn btn-primary">+ Post Item</a>
         <button onclick="logout()" class="btn btn-outline">Log Out</button>

@@ -1,0 +1,141 @@
+/* ─── Saved Page ────────────────────────────────────────────── */
+.saved-page {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem 4rem;
+}
+
+.saved-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.saved-header h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.2rem;
+}
+
+.saved-sub {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.btn-browse {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-browse:hover { background: #1d4ed8; }
+
+/* ─── Toolbar ───────────────────────────────────────────────── */
+.saved-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.saved-count {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.saved-sort-select {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  color: #374151;
+}
+
+/* ─── Saved card overlay (unsave button) ────────────────────── */
+.saved-card-wrap {
+  position: relative;
+}
+
+.unsave-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;
+  transition: transform 0.15s, background 0.15s;
+  line-height: 1;
+}
+
+.unsave-btn:hover {
+  transform: scale(1.15);
+  background: #fee2e2;
+}
+
+/* ─── Status ribbon ─────────────────────────────────────────── */
+.status-ribbon {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: rgba(0,0,0,0.65);
+  color: white;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 10;
+}
+
+.status-ribbon.sold     { background: #1d4ed8; }
+.status-ribbon.reserved { background: #7c3aed; }
+.status-ribbon.removed  { background: #dc2626; }
+
+/* ─── Empty state ───────────────────────────────────────────── */
+.saved-empty {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: #94a3b8;
+}
+
+.saved-empty .e-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.saved-empty h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.saved-empty p {
+  font-size: 0.92rem;
+  margin-bottom: 1.5rem;
+}

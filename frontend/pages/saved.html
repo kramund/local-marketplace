@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saved Listings — Local Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/listings.css"/>
+  <link rel="stylesheet" href="/css/saved.css"/>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="/" class="logo">🛒 Local Marketplace</a>
+      <nav id="main-nav"></nav>
+    </div>
+  </header>
+
+  <div class="saved-page">
+    <div class="saved-header">
+      <div>
+        <h1>🔖 Saved Listings</h1>
+        <p class="saved-sub">Items you've bookmarked for later.</p>
+      </div>
+      <a href="/pages/listings.html" class="btn-browse">Browse More →</a>
+    </div>
+
+    <!-- Sort / filter row -->
+    <div class="saved-toolbar" id="saved-toolbar" style="display:none;">
+      <span id="saved-count" class="saved-count"></span>
+      <select id="saved-sort" onchange="renderSaved()" class="saved-sort-select">
+        <option value="newest">Saved: Newest First</option>
+        <option value="oldest">Saved: Oldest First</option>
+        <option value="price_asc">Price: Low to High</option>
+        <option value="price_desc">Price: High to Low</option>
+      </select>
+    </div>
+
+    <!-- Grid -->
+    <div id="saved-grid" class="listings-grid">
+      <p style="color:#94a3b8;padding:2rem;">Loading...</p>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/saved.js"></script>
+</body>
+</html>
