@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Listings — Local Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <link rel="stylesheet" href="/css/listings.css"/>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-inner">
+      <a href="/" class="logo">🛒 Local Marketplace</a>
+      <nav id="main-nav"></nav>
+    </div>
+  </header>
+
+  <!-- Page Header + Search -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>Browse Listings</h1>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for items..."/>
+        <button onclick="applyFilters()">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="listings-layout">
+
+    <!-- Filters -->
+    <aside class="filters-panel">
+      <h3>🔽 Filters</h3>
+
+      <div class="filter-group">
+        <label>Category</label>
+        <select id="filter-category">
+          <option value="">All Categories</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Condition</label>
+        <select id="filter-condition">
+          <option value="">Any Condition</option>
+          <option value="new">New</option>
+          <option value="like_new">Like New</option>
+          <option value="good">Good</option>
+          <option value="fair">Fair</option>
+          <option value="poor">Poor</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Price Range (₱)</label>
+        <div class="price-range">
+          <input type="number" id="filter-min-price" placeholder="Min" min="0"/>
+          <input type="number" id="filter-max-price" placeholder="Max" min="0"/>
+        </div>
+      </div>
+
+      <button class="filter-apply" onclick="applyFilters()">Apply Filters</button>
+      <button class="filter-reset" onclick="resetFilters()">Reset</button>
+    </aside>
+
+    <!-- Listings -->
+    <div class="listings-main">
+      <div class="listings-toolbar">
+        <span class="listings-count" id="listings-count">Loading...</span>
+        <select class="sort-select" id="sort-select" onchange="applyFilters()">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="popular">Most Popular</option>
+        </select>
+      </div>
+
+      <div class="listings-grid" id="listings-grid">
+        <!-- Listings injected here -->
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/listings.js"></script>
+</body>
+</html>
