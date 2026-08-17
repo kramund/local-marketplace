@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "node backend/server.js",
+    "migrate": "node backend/config/migrate.js",
+    "seed": "node backend/config/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
