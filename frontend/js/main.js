@@ -16,24 +16,20 @@ const heroActions = document.getElementById('hero-actions');
 if (isLoggedIn()) {
   const user = getUser();
 
-  // Fetch unread message count for badge
-  fetch('/api/messages/unread-count', {
-    headers: { 'Authorization': `Bearer ${getToken()}` }
-  }).then(r => r.json()).then(data => {
-    const badge = data.count > 0 ? `<span class="nav-unread">${data.count}</span>` : '';
+  // Fetch unread message count + pending offer count for badges
+  Promise.allSettled([
+    fetch('/api/messages/unread-count', { headers: { 'Authorization': `Bearer ${getToken()}` } }).then(r => r.json()),
+    fetch('/api/offers/pending-count',  { headers: { 'Authorization': `Bearer ${getToken()}` } }).then(r => r.json()),
+  ]).then(([msgResult, offerResult]) => {
+    const msgCount   = msgResult.status   === 'fulfilled' ? msgResult.value.count   : 0;
+    const offerCount = offerResult.status === 'fulfilled' ? offerResult.value.count : 0;
+    const msgBadge   = msgCount   > 0 ? `<span class="nav-unread">${msgCount}</span>`   : '';
+    const offerBadge = offerCount > 0 ? `<span class="nav-unread">${offerCount}</span>` : '';
     if (nav) {
       nav.innerHTML = `
         <span class="nav-greeting">Hi, <strong>${user.username}</strong>!</span>
-        <a href="/pages/messages.html" class="btn btn-outline" style="position:relative;">💬 Messages${badge}</a>
-        <a href="/pages/post-listing.html" class="btn btn-primary">+ Post Item</a>
-        <button onclick="logout()" class="btn btn-outline">Log Out</button>
-      `;
-    }
-  }).catch(() => {
-    if (nav) {
-      nav.innerHTML = `
-        <span class="nav-greeting">Hi, <strong>${user.username}</strong>!</span>
-        <a href="/pages/messages.html" class="btn btn-outline">💬 Messages</a>
+        <a href="/pages/messages.html" class="btn btn-outline" style="position:relative;">💬 Messages${msgBadge}</a>
+        <a href="/pages/offers.html"   class="btn btn-outline" style="position:relative;">💰 Offers${offerBadge}</a>
         <a href="/pages/post-listing.html" class="btn btn-primary">+ Post Item</a>
         <button onclick="logout()" class="btn btn-outline">Log Out</button>
       `;

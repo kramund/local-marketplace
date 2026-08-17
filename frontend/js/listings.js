@@ -315,7 +315,7 @@ if (listingDetail) {
                 ` : `
                   ${isLoggedIn() ? `
                     <button class="btn-action btn-action-primary" onclick="openMessageModal(${l.id}, '${l.seller_username}')">💬 Message Seller</button>
-                    ${l.allow_offers ? `<button class="btn-action btn-action-secondary" onclick="alert('💰 Offers coming soon!')">💰 Make an Offer</button>` : ''}
+                    ${l.allow_offers ? `<button class="btn-action btn-action-secondary" onclick="openOfferModal(${l.id}, ${l.price}, '${(l.title||'').replace(/'/g,"\\'")}')">💰 Make an Offer</button>` : ''}
                     <button class="btn-action btn-action-save ${savedState ? 'saved' : ''}" id="save-btn" onclick="toggleSave(${l.id})">
                       ${savedState ? '❤️ Saved' : '🤍 Save Listing'}
                     </button>
